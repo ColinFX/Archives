@@ -35,3 +35,5 @@ Documentation for the study and practice of computer science and applied mathema
 **中文语境下英语单词注释使用全角圆括号，内部左右不需要空格。**
 
 例如：（channel）
+
+**所有文档 Tab 缩进为 4 个空格。**
