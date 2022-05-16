@@ -10,7 +10,7 @@ Documentation for the study and practice of computer science and applied mathema
 
 例如：6007 端口
 
-例如：ip 地址
+例如：IP 地址
 
 **中文标点和西文字母、阿拉伯数字之间不需要空格。**
 
@@ -25,3 +25,13 @@ Documentation for the study and practice of computer science and applied mathema
 **完整终端命令需要完整命令前缀，前缀和命令语句之间需要空格。**
 
 例如：`colinfx@local:~$ ls`
+
+**西文专有名词首字母大写，专有名词组所有单词首字母均大写，缩写所有单词均大写，除非特殊习惯。**
+
+例如：Secure Shell
+
+例如：IP
+
+**中文语境下英语单词注释使用全角圆括号，内部左右不需要空格。**
+
+例如：（channel）
