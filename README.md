@@ -37,3 +37,5 @@ Documentation for the study and practice of computer science and applied mathema
 例如：（channel）
 
 **所有文档 Tab 缩进为 4 个空格。**
+
+**行内代码块用前后单个 ` 标记，行间单行代码用两个，行间多行代码用三个。**
