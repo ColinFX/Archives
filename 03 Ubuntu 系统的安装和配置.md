@@ -107,6 +107,21 @@ Windows 系统将硬件时间（Hardware clock）作为本地时间，而 Ubuntu
 
 2. 重新启动电脑。
 
+### 拓展 apt 下载链接列表
+
+`colinfx@local:~$ sudo add-apt-repository ppa:deadsnakes/ppa`
+
+### 安装 python 3.7
+
+`colinfx@local:~$ suo apt install python 3.7`
+
+### 设置任务栏时间格式
+
+‵‵`
+colinfx@local:~$ gsettings set org.gnome.desktop.interface clock-show-date true
+colinfx@local:~$ gsettings set org.gnome.desktop.interface clock-show-seconds true
+```
+
 ## 相关链接
 
 参考教程：https://blog.csdn.net/qq_42699580/article/details/104312383
