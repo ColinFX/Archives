@@ -30,14 +30,20 @@ colinfx@local:~$ git config --global user.email "xiao.fei@polytechnique.edu"
 
 ### 初始化本地仓库（repository）
 
+#### 指令
+
 ```
 colinfx@local:~$ cd ~/testgit
 colinfx@local:~/testgit$ git init
 ```
 
+#### 解释
+
 注意替换文件地址为实际位置，可以新创建一个工作区（workspace），也可以在现有的代码工作区的基础上初始化本地仓库。命令完成后会在该文件夹内新增一个 .git 子文件夹，用于跟踪管理版本。
 
 ### 添加变动到暂存区（stage）
+
+#### 指令
 
 ``colinfx@local:~/testgit$ git add readme.txt``
 
@@ -45,17 +51,23 @@ colinfx@local:~/testgit$ git init
 
 ``colinfx@local:~/testgit$ git add -p``
 
+#### 解释
+
 `add` 命令将工作区中的单个文件或整个文件夹的所有变动暂存到暂存区（stage）。
 
 `-p` 参数暂存整个工作区所有文件的变动。
 
 ### 提交一个暂存区快照到本地仓库（repository）
 
+#### 指令
+
 ``colinfx@local:~/testgit$ git commit -m "add readme.txt"``
 
 ``colinfx@local:~/testgit$ git commit -a``
 
 ``colinfx@local:~/testgit$ git commit -am "add readme.txt"``
+
+#### 解释
 
 `commit` 命令将暂存区中的文件提交到本地仓库（repository）从而创建一个当前暂存的工作区文件状态和内容的快照。
 
