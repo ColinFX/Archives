@@ -117,7 +117,7 @@ Windows 系统将硬件时间（Hardware clock）作为本地时间，而 Ubuntu
 
 ### 设置任务栏时间格式
 
-‵‵`
+```
 colinfx@local:~$ gsettings set org.gnome.desktop.interface clock-show-date true
 colinfx@local:~$ gsettings set org.gnome.desktop.interface clock-show-seconds true
 ```
