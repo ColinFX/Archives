@@ -4,7 +4,7 @@
 
 ## Cheat sheet
 
-<img src="https://wac-cdn.atlassian.com/dam/jcr:d60ca565-89db-4f07-98a0-dd35fae97293/git1.jpg?cdnVersion=357" width="1000">
+<img src="https://user-images.githubusercontent.com/45534476/169618224-03bae472-c9ad-483e-b125-75fb5eb71b92.png" width="1000">
 
 ## Git 工作模式
 
