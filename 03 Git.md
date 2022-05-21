@@ -172,7 +172,9 @@ colinfx@local:~/testgit$ git push -u origin master
 
 ``colinfx@local:~/testgit$ git checkout -b dev``
 
-该命令将会切换到 `dev` 分支上。注意，分支切换时，Git 将会切换工作区内的文件到新切换到的分支的最后一个快照????????????//
+该命令将会切换到 `dev` 分支上。注意，此时 Git 将会切换工作区内的文件到 `master` 分支的最后一个快照。
+
+注意，如果在切换分支的时候有修改的内容在工作区或暂存区没有被提交，这些内容会被同步迁移到切换后的分支的工作区或暂存区上。
 
 注意，切换分支命令并不负责分支创建。添加 `-b` 参数会在该分支并未被创建时自动创建一个分支并切换到该分支上。`git checkout -b dev` 等同于先 `git branch dev` 然后 `git checkout dev`。
 
@@ -198,11 +200,11 @@ colinfx@local:~/testgit$ git push -u origin master
 
 例如：`dev` 分支从 `master` 分支上创建以后，用户在 `dev` 和 `master` 两个分支上都对 `readme.txt` 进行了不同的修改。
 
-此时在 `master` 分支上执行 `git merge dev` 程序将会报错，并且此时分支状态将会从 `(master)` 进入到 `(master|MERGING)` 模式。可以执行 `git merge --abort` 命令退出合并模式。
+此时在 `master` 分支上执行 `git merge dev` 程序将会报错，并且此时分支状态将会从 `(master)` 进入到 `(master|MERGING)` 模式。可以执行 `git merge --abort` 命令退出合并模式，这将会让当前工作区文件回到 `master` 最近一次提交的快照状态。
 
 此时可以执行 `git status` 查看冲突的文件（Unmerged paths, both modified）。
 
-此时执行 `cat readme.txt` 将会可以查看冲突文件中具体的冲突内容，其中 `<<<<<<< HEAD` 标注的是当前 `master` 分支的修改内容，`>>>>>>> dev` 标注的是被合并 `dev` 分支的修改内容。例如：以下的示例表示该文件在 `master` 分支上添加了 `77777` 内容，而在 `dev` 上添加了 `88888` 内容，导致了冲突。
+此时工作区中的文件 readme.txt 已经被修改到一个中间状态，格式如下，： `<<<<<<< HEAD` 标注的是当前 `master` 分支的修改内容，`>>>>>>> dev` 标注的是被合并 `dev` 分支的修改内容。例如：以下的示例表示该文件在 `master` 分支上添加了 `77777` 内容，而在 `dev` 上添加了 `88888` 内容，导致了冲突。
 
 ```
 <<<<<<< HEAD
@@ -212,11 +214,9 @@ colinfx@local:~/testgit$ git push -u origin master
 >>>>>>> dev
 ```
 
-此时，`dev` 分支服从 `master` 分支的修改，需要更改 `dev` 分支上的内容以解决冲突。
+我们希望`dev` 分支服从 `master` 分支的修改，因此需要更改 `dev` 分支上的内容以解决冲突。
 
-此时工作区里的文件是哪个分支的？？？？？？？？
-
-
+此时只要修改当前工作区中的文件到 `77777` 的状态，并且在当前 `master` 分支上 `commit`，冲突就会被解决，分支状态从 `(master|MERGING)` 回到 `(master)` 模式，合并结束。注意，此次 `commit` 并不是一个普通的 `commit` 而是一个 `commit (merge)。`
 
 ## 多人合作
 
@@ -225,3 +225,9 @@ colinfx@local:~/testgit$ git push -u origin master
 https://www.eet-china.com/mp/a85036.html
 
 https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud
+
+## 个人思考
+
+1. Git 整个系统的核心是一次次 `commit`，而 workspace 中我们所接触到的文件是一个个 `commit` 的“影子文件”，而 HEAD 指示当前工作区中的文件是由哪个 `commit` 而来。我们可以在这些工作区文件的基础上进行修改，然后提交形成一个新的 `commit`。
+
+2. 只有一条主线时，所有的 `commit` 按照顺序串在一条线上，即为主分支。创建了其他的分支以后，这些分支也是由串起来的一次次 `commit` 构成的，而合并分支所作的也是合并两个分支上各自最新的 `commit`。
