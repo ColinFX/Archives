@@ -83,7 +83,7 @@ colinfx@local:~/testgit$ git init
 
 ``colinfx@local:~/testgit$ git log``
 
-该命令显示由近到远的三次 `commit` 记录。
+该命令显示由近到远 `commit` 记录（包括分支记录）。
 
 ## 撤销和删除修改
 
@@ -91,7 +91,7 @@ colinfx@local:~/testgit$ git init
 
 ``colinfx@local:~/testgit$ git reflog``
 
-该命令是 `log` 命令的升级版，由近到远显示所有 `commit` 记录，并额外显示每次提交的版本号。
+该命令是 `log` 命令的升级版，由近到远显示 `commit` 记录，并额外显示每次提交的版本号。
 
 示例：`6fcfc89 HEAD@{0}: commit: add readme.txt` 说明最近一次提交的版号为 6fcfc89。
 
@@ -155,6 +155,68 @@ colinfx@local:~/testgit$ git push -u origin master
 该命令将会把 Github 上的整个快照克隆到本地。注意，该命令会在当前目录下创建一个和远程仓库名称相同的文件夹 `~/testgit2`，并且这个新的文件夹内不需要重新初始化本地仓库。
 
 ## 分支
+
+### `branch`
+
+``colinfx@local:~/testgit$ git branch``
+
+该命令将显示所有的分支并且在当前分支前添加一个星号突出显示。
+
+``colinfx@local:~/testgit$ git branch dev``
+
+该命令将会新创建一个名为 `dev` 的分支，但是并不会切换当前 HEAD 位置。
+
+### `checkout`
+
+``colinfx@local:~/testgit$ git checkout dev``
+
+``colinfx@local:~/testgit$ git checkout -b dev``
+
+该命令将会切换到 `dev` 分支上。注意，分支切换时，Git 将会切换工作区内的文件到新切换到的分支的最后一个快照????????????//
+
+注意，切换分支命令并不负责分支创建。添加 `-b` 参数会在该分支并未被创建时自动创建一个分支并切换到该分支上。`git checkout -b dev` 等同于先 `git branch dev` 然后 `git checkout dev`。
+
+### `merge`
+
+``colinfx@local:~/testgit$ git merge dev``
+
+该命令将会合并所指定的分支 `dev` 到当前所在的分支上。注意，合并分支命令并不会删除被合并的分支 `dev`。
+
+如果只有被合并的分支上有新的修改，而当前分支没有，则 Git 会进入 Fast-forward 模式，直接应用被合并分支上的修改内容到主分支上。
+
+如果当前分支上的工作区或暂存区有新的修改没有被提交，则合并命令不会被开始。
+
+如果在两个分支上分别进行了不同的修改，Git 将会检测到冲突（conflict）并且终止分支的合并。更多信息详见下文**解决分支冲突**内容。
+
+### `branch -d`
+
+``colinfx@local:~/testgit$ git branch -d dev``
+
+该命令将会完全删除指定的 `dev` 分支。
+
+## 解决分支冲突
+
+例如：`dev` 分支从 `master` 分支上创建以后，用户在 `dev` 和 `master` 两个分支上都对 `readme.txt` 进行了不同的修改。
+
+此时在 `master` 分支上执行 `git merge dev` 程序将会报错，并且此时分支状态将会从 `(master)` 进入到 `(master|MERGING)` 模式。可以执行 `git merge --abort` 命令退出合并模式。
+
+此时可以执行 `git status` 查看冲突的文件（Unmerged paths, both modified）。
+
+此时执行 `cat readme.txt` 将会可以查看冲突文件中具体的冲突内容，其中 `<<<<<<< HEAD` 标注的是当前 `master` 分支的修改内容，`>>>>>>> dev` 标注的是被合并 `dev` 分支的修改内容。例如：以下的示例表示该文件在 `master` 分支上添加了 `77777` 内容，而在 `dev` 上添加了 `88888` 内容，导致了冲突。
+
+```
+<<<<<<< HEAD
+77777
+=======
+88888
+>>>>>>> dev
+```
+
+此时，`dev` 分支服从 `master` 分支的修改，需要更改 `dev` 分支上的内容以解决冲突。
+
+此时工作区里的文件是哪个分支的？？？？？？？？
+
+
 
 ## 多人合作
 
