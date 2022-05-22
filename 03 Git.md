@@ -242,9 +242,9 @@ colinfx@local:~/testgit$ git fetch origin
 colinfx@local:~/testgit$ git merge origin/master
 ```
 
-第一个命令将会从远程仓库抓取本地仓库中没有的分支和 `commit`，执行完成后显示 `... master -> origin/master` 表示数据已经从云端下载到了本地，被暂存在 `origin/master` 分支下。注意这个分支的名字看起来像是在云端，但是经过 `fetch` 操作后所有的数据已经被下载到了本地。
+第一个命令将会从远程仓库抓取本地仓库中没有的分支和 `commit`，执行完成后显示 `... main -> origin/master` 表示数据已经从云端下载到了本地，且 `main` 分支中的内容被暂存在 `origin/master` 分支下。注意这个分支的名字看起来像是在云端，但是经过 `fetch` 操作后所有的数据已经被下载到了本地。
 
-第二个命令将会把下载好的远程仓库更新信息合并到当前分支。
+第二个命令将会把下载好的远程仓库的 `origin/master` 分支更新信息合并到当前分支。
 
 ### `pull`
 
@@ -265,8 +265,6 @@ colinfx@local:~/testgit$ git merge origin/master
 该命令将会把本地 `dev` 分支的最新一次 `commit` 内容推送到远程仓库 Github 的 `dev` 分支上，如果远程仓库没有 `dev` 分支，则会自动创建该分支。如果命令没有明确远程仓库的目标分支，则默认为 `main`。
 
 注意，此时 `origin` 是在初始化时定下的一个 URL 别称。
-
-如果推送失败
 
 ## 参考链接
 
