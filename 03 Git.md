@@ -274,7 +274,7 @@ https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud
 
 https://www.runoob.com/git/git-tutorial.html
 
-## 个人思考
+## 个人笔记
 
 1. Git 整个系统的核心是一次次 `commit`。
 
