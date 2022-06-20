@@ -281,3 +281,54 @@ https://www.runoob.com/git/git-tutorial.html
 2. workspace 中我们所接触到的文件是一个个 `commit` 的“影子文件”，而 HEAD 指示当前工作区中的文件是由哪个 `commit` 而来。我们可以在这些工作区文件的基础上进行修改，然后提交形成一个新的 `commit`。
 
 3. 只有一条主线时，所有的 `commit` 按照顺序串在一条线上，即为主分支。创建了其他的分支以后，这些分支也是由串起来的一次次 `commit` 构成的，而合并分支所作的也是合并两个分支上各自最新的 `commit`。
+
+
+
+
+
+
+
+
+
+
+## Practical Notebook
+
+1. Download remote master to local drive
+
+``git clone https://github.com/...`` 
+
+2. Create personal development branch, each branch corresponds to one big mission, like "extract informations from report"
+
+``git checkout -b colinfx/extract-from-report``
+
+3. Add and edit file in this branch
+
+4. Let git track added files
+
+``git add -r newpackage``
+
+5. Commit to local git repository and edit comment in pop-up vim
+
+``git commit -a``
+
+6. Commit more
+
+7. Download current newest version of remote files to local
+
+``git fetch origin master``
+
+8. Merge local commits one by one, and select to drop unwanted (usually already pushed in the last PR) commits in IntelliJ
+
+``git rebase --interactive origin/master``
+
+9. Push ! Every PR corresponds to one small task, like "upload to server and obtain response"
+
+``git push origin colinfx/extract-from-report``
+
+* Check current workspace if anything not commited
+
+``git status``
+
+* Check previous commit history
+
+``git reflog``
