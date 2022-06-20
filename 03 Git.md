@@ -321,9 +321,9 @@ https://www.runoob.com/git/git-tutorial.html
 
 ``git rebase --interactive origin/master``
 
-9. Push ! Every PR corresponds to one small task, like "upload to server and obtain response"
+9. Force push cause rebased ! Every PR corresponds to one small task, like "upload to server and obtain response"
 
-``git push origin colinfx/extract-from-report``
+``git push --force origin colinfx/extract-from-report``
 
 * Check current workspace if anything not commited
 
